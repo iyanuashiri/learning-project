@@ -2,6 +2,9 @@
 
 ## Setup
 
+
+## How to run backend
+
 #### virtual environment 
 1. Clone the repository `git clone https://github.com/iyanuashiri/learning-project.git`
 2. Create a virtual environment `python -m venv venv`
@@ -21,6 +24,13 @@
 2. docker build -t classmatebot-backend .
 3. docker run -p 8000:8000 classmatebot-backend
 
+
+## How to run adk-service
+
+
+#### uv
+1. uv run adk api_server
+2. uv run adk web
 
 
 ## Cloud services 
@@ -56,6 +66,3 @@
 7. Add the https url to the webhook in twilio
 
 
-## How to run adk-service
-1. uv run adk api_server
-2. uv run adk web
