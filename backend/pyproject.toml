@@ -1,0 +1,23 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "celery>=5.5.3",
+    "django>=5.2.8",
+    "django-cors-headers>=4.9.0",
+    "django-phonenumber-field[phonenumbers]>=8.3.0",
+    "djangorestframework>=3.16.1",
+    "drf-spectacular>=0.29.0",
+    "gunicorn>=23.0.0",
+    "httpx>=0.28.1",
+    "langchain==0.3.27",
+    "langchain-google-genai==2.1.9",
+    "psycopg2-binary>=2.9.11",
+    "python-decouple>=3.8",
+    "redis[hiredis]>=7.0.1",
+    "sendgrid>=6.12.5",
+    "twilio>=9.8.5",
+]
