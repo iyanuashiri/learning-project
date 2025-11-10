@@ -2,7 +2,7 @@
 
 ## Setup
 
-virtual environment 
+#### virtual environment 
 1. Clone the repository `git clone https://github.com/iyanuashiri/learning-project.git`
 2. Create a virtual environment `python -m venv venv`
 3. Activate the virtual environment `venv\Scripts\activate` on windows or `source venv/bin/activate` on linux
@@ -10,13 +10,13 @@ virtual environment
 5. Run the migrations `python manage.py migrate`
 6. Run the server `python manage.py runserver`
 
-uv
+#### uv
 1. Clone the repository `git clone https://github.com/iyanuashiri/learning-project.git`
 2. uv sync
 3. uv run python manage.py migrate
 4. uv run python manage.py runserver
 
-docker
+#### docker
 1. Clone the repository `git clone https://github.com/iyanuashiri/learning-project.git`
 2. docker build -t classmatebot-backend .
 3. docker run -p 8000:8000 classmatebot-backend
