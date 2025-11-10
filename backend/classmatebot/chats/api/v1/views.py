@@ -6,7 +6,7 @@ from rest_framework.parsers import FormParser, MultiPartParser
 from django.db import transaction
 from django.utils import timezone
 
-from wrappers.whastapp import send_whatsapp_message
+from wrappers.whatsapp import send_whatsapp_message
 
 from config.permissions import IsADKWorker
 from classmatebot.accounts.models import Account, State

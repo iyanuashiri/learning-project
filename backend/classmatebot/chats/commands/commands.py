@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import threading
 
-from wrappers.whastapp import send_whatsapp_message
+from wrappers.whatsapp import send_whatsapp_message
 from classmatebot.chats.receivers.receivers import AccountReceiver, SubjectReceiver, EnrollmentReceiver, QuizReceiver
 from classmatebot.accounts.models import State
 from classmatebot.subjects.models import Topic, Checkpoint, Bite, Milestone

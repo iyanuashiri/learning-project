@@ -1,7 +1,7 @@
 from time import sleep
 from celery import shared_task
 
-from wrappers.whastapp import send_whatsapp_message
+from wrappers.whatsapp import send_whatsapp_message
 from classmatebot.subjects.prompts import generate_preference_content
 from classmatebot.subjects.models import Subject, Topic
 from classmatebot.accounts.models import Account, State
