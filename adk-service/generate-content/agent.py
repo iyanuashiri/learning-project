@@ -117,7 +117,8 @@ Your output MUST be the final, complete JSON object and nothing else.
 
 # Agent 6: Backend Processing Agent
 # Takes the final JSON and uses tools to save everything to the backend.
-# Note: This agent assumes `account_id` and `phone_number` are passed in the initial session state.
+# Note: This agent assumes `account_id` and `phone_number` are passed in the initial session state. It will use these to enroll the user and notify them.
+
 backend_processing_agent = LlmAgent(
     name="BackendProcessingAgent",
     model='gemini-2.5-pro', # A more capable model for complex tool orchestration
