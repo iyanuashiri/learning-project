@@ -265,8 +265,8 @@ class GenerateCourseCommand(Command):
             args=(self.preferences, self.to_number, account.id)
         ).start()
 
-        subject_receiver = SubjectReceiver(to_number=self.to_number)
-        preferences = subject_receiver.create_subject_by_user(preferences=self.preferences)
+        # subject_receiver = SubjectReceiver(to_number=self.to_number)
+        # preferences = subject_receiver.create_subject_by_user(preferences=self.preferences)
 
 
         state, _ = State.objects.get_or_create(account=account)
