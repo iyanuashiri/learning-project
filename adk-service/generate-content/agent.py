@@ -115,6 +115,31 @@ Your output MUST be the final, complete JSON object and nothing else.
 )
 
 
+# Agent 6: Backend Processing Agent
+# Takes the final JSON and uses tools to save everything to the backend.
+# Note: This agent assumes `account_id` and `phone_number` are passed in the initial session state.
+backend_processing_agent = LlmAgent(
+    name="BackendProcessingAgent",
+    model='gemini-2.5-pro', # A more capable model for complex tool orchestration
+    instruction="""You are a backend processing orchestrator. Your job is to take the final generated content and user details, and use a series of tools to save the content, enroll the user, and send a notification.
+
+You have access to the final lesson content in the `{final_json_output}` variable.
+You have access to the user's details in the `{account_id}` and `{phone_number}` variables.
+
+Follow these steps in order and do not proceed if a step fails:
+1.  Call `create_subject` using `subject_name` and `subject_description` from the lesson content. Extract the `id` from the returned subject data.
+2.  Call `create_topic` using the `subject_id` from step 1, and the `topic_name`, `topic_description`, and `topic_content` from the lesson content. Extract the `id` from the returned topic data.
+3.  Call `create_quiz` using the `subject_id` and `topic_id` from the previous steps.
+4.  Call `enroll_user` using the `{account_id}` and the `subject_id`.
+5.  Call `notify_user` using the `{phone_number}`. The message should be: "Your new lesson on '{topic_name}' is ready!"
+6.  Finally, call `update_user_state` using the `{account_id}` and set the state to 'idle'.
+7.  After all steps are complete, respond with a simple confirmation message like "Process complete. All data saved and user notified."
+""",
+    description="Saves the generated content to the backend and notifies the user.",
+    tools=[create_subject, create_topic, create_quiz, enroll_user, notify_user, update_user_state]
+)
+
+
 # --- 2. Create the SequentialAgent to Orchestrate the Full Pipeline ---
 content_pipeline_agent = SequentialAgent(
     name="ContentPipelineAgent",
@@ -123,10 +148,10 @@ content_pipeline_agent = SequentialAgent(
         content_drafter_agent,
         content_reviewer_agent,
         content_refiner_agent,
-        json_assembler_agent
+        json_assembler_agent,
+        backend_processing_agent
     ],
     description="Executes a full sequence of planning, drafting, reviewing, refining, and formatting to generate lesson content.",
-    tools=[create_subject, create_topic, create_quiz, enroll_user, notify_user, update_user_state]
 )
 
 root_agent = content_pipeline_agent
